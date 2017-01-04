@@ -26,8 +26,6 @@ try {
 // Get details about the user
 $user->getId();
 $user->getPhoneNumber();
-$user->getVerificationType();
-$user->getCreatedAt();
 
 // Get details about the user's OAuth token
 $accessToken = $user->getAccessToken();
