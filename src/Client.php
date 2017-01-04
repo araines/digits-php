@@ -13,7 +13,7 @@ use Sportlobster\Digits\Exception\KeyMismatchException;
 use Sportlobster\Digits\Normalizer\UserDenormalizer;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\NameConverter\CamelCaseToSnakeCaseNameConverter;
-use Symfony\Component\Serializer\Normalizer\PropertyNormalizer;
+use Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer;
 use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\Serializer\SerializerInterface;
 
@@ -63,7 +63,7 @@ class Client
         if ($this->serializer === null) {
             $encoders = [new JsonEncoder()];
             $normalizers = [
-                new PropertyNormalizer(null, new CamelCaseToSnakeCaseNameConverter()),
+                new GetSetMethodNormalizer(null, new CamelCaseToSnakeCaseNameConverter()),
             ];
             $this->serializer = new Serializer($normalizers, $encoders);
         }
