@@ -5,7 +5,6 @@ namespace spec\Sportlobster\Digits\Exception;
 use Sportlobster\Digits\Exception\AuthenticationException;
 use Sportlobster\Digits\Exception\DigitsException;
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 
 class AuthenticationExceptionSpec extends ObjectBehavior
 {

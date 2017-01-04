@@ -5,7 +5,6 @@ namespace Sportlobster\Digits;
 use GuzzleHttp\Client as HttpClient;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Handler\MockHandler;
-use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Response;
 
 class VerifyUserFeatureTest extends \PHPUnit_Framework_TestCase

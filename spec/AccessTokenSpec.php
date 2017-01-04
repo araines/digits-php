@@ -4,7 +4,6 @@ namespace spec\Sportlobster\Digits;
 
 use Sportlobster\Digits\AccessToken;
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 
 class AccessTokenSpec extends ObjectBehavior
 {

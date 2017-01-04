@@ -3,7 +3,6 @@
 namespace spec\Sportlobster\Digits;
 
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 use Sportlobster\Digits\AccessToken;
 use Sportlobster\Digits\User;
 

@@ -5,7 +5,6 @@ namespace spec\Sportlobster\Digits\Exception;
 use Sportlobster\Digits\Exception\KeyMismatchException;
 use Sportlobster\Digits\Exception\DigitsException;
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 
 class KeyMismatchExceptionSpec extends ObjectBehavior
 {

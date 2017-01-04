@@ -10,7 +10,6 @@ use Sportlobster\Digits\Exception\AuthenticationException;
 use Sportlobster\Digits\Exception\InvalidHostException;
 use Sportlobster\Digits\Exception\InvalidSchemeException;
 use Sportlobster\Digits\Exception\KeyMismatchException;
-use Sportlobster\Digits\Normalizer\UserDenormalizer;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\NameConverter\CamelCaseToSnakeCaseNameConverter;
 use Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer;
@@ -81,8 +80,8 @@ class Client
     /**
      * Verify a set of OAuth Echo credentials with Digits.
      *
-     * @param string $url  The echo url.
-     * @param string $auth The echo auth parameters.
+     * @param string $url  the echo url
+     * @param string $auth the echo auth parameters
      *
      * @throws InvalidSchemeException
      * @throws KeyMismatchException

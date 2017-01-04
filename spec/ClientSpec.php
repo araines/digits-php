@@ -6,7 +6,6 @@ use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\RequestException;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
-use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Sportlobster\Digits\Client;
 use Sportlobster\Digits\Exception\AuthenticationException;
@@ -49,7 +48,7 @@ class ClientSpec extends ObjectBehavior
         $url = 'https://wrong.hostname.com/1.1/sdk/account.json';
         $auth = $this->generateAuth('OAuth', [
             'oauth_consumer_key' => 'SomeKey',
-            'oauth_nonce' => 'abc'
+            'oauth_nonce' => 'abc',
         ]);
 
         $this->beConstructedWith('SomeKey');
@@ -64,7 +63,7 @@ class ClientSpec extends ObjectBehavior
         $url = 'https://api.digits.com/1.1/sdk/account.json';
         $auth = $this->generateAuth('OAuth', [
             'oauth_consumer_key' => 'SomeKey',
-            'oauth_nonce' => 'abc'
+            'oauth_nonce' => 'abc',
         ]);
 
         $options = Argument::withEntry('headers', Argument::withEntry('Authorization', $auth));
@@ -88,7 +87,7 @@ class ClientSpec extends ObjectBehavior
         $url = 'https://api.twitter.com/1.1/sdk/account.json';
         $auth = $this->generateAuth('OAuth', [
             'oauth_consumer_key' => 'SomeKey',
-            'oauth_nonce' => 'abc'
+            'oauth_nonce' => 'abc',
         ]);
 
         $options = Argument::withEntry('headers', Argument::withEntry('Authorization', $auth));
@@ -112,7 +111,7 @@ class ClientSpec extends ObjectBehavior
         $url = 'https://api.twitter.com/1.1/sdk/account.json';
         $auth = $this->generateAuth('OAuth', [
             'oauth_consumer_key' => 'SomeKey',
-            'oauth_nonce' => 'abc'
+            'oauth_nonce' => 'abc',
         ]);
 
         $httpClient->request('GET', Argument::cetera())->willThrow(RequestException::class);

@@ -3,7 +3,7 @@
 namespace Sportlobster\Digits;
 
 /**
- * A Digits AccessToken object
+ * A Digits AccessToken object.
  */
 class AccessToken
 {

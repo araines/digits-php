@@ -3,7 +3,7 @@
 namespace Sportlobster\Digits;
 
 /**
- * A Digits User object
+ * A Digits User object.
  */
 class User
 {
