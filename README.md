@@ -1,5 +1,5 @@
-digits-php
-==========
+Digits
+======
 
 [ ![Codeship Status for sportlobster/digits-php](https://codeship.com/projects/7b84b480-b4a8-0134-0817-665c05a5a8f8/status?branch=master)](https://codeship.com/projects/193797)
 

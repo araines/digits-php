@@ -1,5 +1,5 @@
 formatter.name: pretty
 suites:
-    eplayer:
+    digits:
         namespace: Sportlobster\Digits
         psr4_prefix: Sportlobster\Digits
