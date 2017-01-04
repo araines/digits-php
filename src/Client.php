@@ -12,6 +12,7 @@ use Sportlobster\Digits\Exception\InvalidSchemeException;
 use Sportlobster\Digits\Exception\KeyMismatchException;
 use Sportlobster\Digits\Normalizer\UserDenormalizer;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\NameConverter\CamelCaseToSnakeCaseNameConverter;
 use Symfony\Component\Serializer\Normalizer\PropertyNormalizer;
 use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\Serializer\SerializerInterface;
@@ -62,8 +63,7 @@ class Client
         if ($this->serializer === null) {
             $encoders = [new JsonEncoder()];
             $normalizers = [
-                new UserDenormalizer(),
-                new PropertyNormalizer(),
+                new PropertyNormalizer(null, new CamelCaseToSnakeCaseNameConverter()),
             ];
             $this->serializer = new Serializer($normalizers, $encoders);
         }
@@ -121,7 +121,7 @@ class Client
             throw new AuthenticationException($e->getMessage());
         }
 
-        $user = $this->getSerializer()->deserialize($response, User::class, 'json');
+        $user = $this->getSerializer()->deserialize($response->getBody(), User::class, 'json');
 
         return $user;
     }

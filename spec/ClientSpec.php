@@ -70,7 +70,10 @@ class ClientSpec extends ObjectBehavior
         $options = Argument::withEntry('headers', Argument::withEntry('Authorization', $auth));
         $httpClient->request('GET', $url, $options)->willReturn($response);
 
-        $serializer->deserialize($response, User::class, 'json')->willReturn($user);
+        $body = ['a' => 'b'];
+        $response->getBody()->willReturn($body);
+
+        $serializer->deserialize($body, User::class, 'json')->willReturn($user);
 
         $this->beConstructedWith('SomeKey');
         $this->setHttpClient($httpClient);
@@ -91,7 +94,10 @@ class ClientSpec extends ObjectBehavior
         $options = Argument::withEntry('headers', Argument::withEntry('Authorization', $auth));
         $httpClient->request('GET', $url, $options)->willReturn($response);
 
-        $serializer->deserialize($response, User::class, 'json')->willReturn($user);
+        $body = ['a' => 'b'];
+        $response->getBody()->willReturn($body);
+
+        $serializer->deserialize($body, User::class, 'json')->willReturn($user);
 
         $this->beConstructedWith('SomeKey');
         $this->setHttpClient($httpClient);

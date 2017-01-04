@@ -2,22 +2,36 @@
 
 namespace Sportlobster\Digits;
 
+/**
+ * A Digits User object
+ */
 class User
 {
+    /**
+     * @var string
+     */
     private $id;
+
+    /**
+     * @var string
+     */
     private $phoneNumber;
+
+    /**
+     * @var AccessToken
+     */
     private $accessToken;
+
+    public function __construct($idStr, $phoneNumber, AccessToken $accessToken)
+    {
+        $this->id = $idStr;
+        $this->phoneNumber = $phoneNumber;
+        $this->accessToken = $accessToken;
+    }
 
     public function getId()
     {
         return $this->id;
-    }
-
-    public function setId($id)
-    {
-        $this->id = $id;
-
-        return $this;
     }
 
     public function getPhoneNumber()
@@ -25,22 +39,8 @@ class User
         return $this->phoneNumber;
     }
 
-    public function setPhoneNumber($phoneNumber)
-    {
-        $this->phoneNumber = $phoneNumber;
-
-        return $this;
-    }
-
     public function getAccessToken()
     {
         return $this->accessToken;
-    }
-
-    public function setAccessToken(AccessToken $token)
-    {
-        $this->accessToken = $token;
-
-        return $this;
     }
 }
