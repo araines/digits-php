@@ -1,0 +1,5 @@
+formatter.name: pretty
+suites:
+    digits:
+        namespace: Sportlobster\Digits
+        psr4_prefix: Sportlobster\Digits
