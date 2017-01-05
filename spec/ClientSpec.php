@@ -105,8 +105,7 @@ class ClientSpec extends ObjectBehavior
     }
 
     public function it_throws_an_authentication_exception_if_could_not_verify_user(
-        ClientInterface $httpClient, SerializerInterface $serializer,
-        ResponseInterface $response, User $user
+        ClientInterface $httpClient
     ) {
         $url = 'https://api.twitter.com/1.1/sdk/account.json';
         $auth = $this->generateAuth('OAuth', [
