@@ -33,6 +33,21 @@ $accessToken->getToken();
 $accessToken->getSecret();
 ```
 
+The underlying HTTP client (Guzzle) can be configured.  This allows the ability
+to set request timeout options, proxies etc.
+
+```
+use Sportlobster\Digits\Client;
+
+// See http://docs.guzzlephp.org/en/latest/request-options.html
+$options = [
+    'connect_timeout' => 3.14,
+    'proxy' => 'tcp://localhost:8125',
+];
+
+$client = Client('YOUR_DIGITS_CONSUMER_KEY', $options);
+```
+
 Contributing
 ------------
 

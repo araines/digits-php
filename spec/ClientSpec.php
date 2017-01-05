@@ -23,6 +23,20 @@ class ClientSpec extends ObjectBehavior
         $this->shouldHaveType(Client::class);
     }
 
+    public function it_configures_http_client_on_initialization()
+    {
+        $options = [
+            'connect_timeout' => 3.14,
+            'proxy' => 'tcp://localhost:8125',
+        ];
+        $this->beConstructedWith('SomeKey', $options);
+
+        $httpClient = $this->getHttpClient();
+        $httpClient->shouldHaveType(ClientInterface::class);
+        $httpClient->getConfig('connect_timeout')->shouldReturn(3.14);
+        $httpClient->getConfig('proxy')->shouldReturn('tcp://localhost:8125');
+    }
+
     public function it_throws_an_invalid_scheme_exception_when_not_oauth_during_verification()
     {
         $url = 'https://api.digits.com/1.1/sdk/account.json';
