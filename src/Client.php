@@ -38,11 +38,22 @@ class Client
 
     /**
      * @param string $consumerKey Digits Consumer Key
+     * @param array  $options     Options for the underlying HTTP client
      */
-    public function __construct($consumerKey)
+    public function __construct($consumerKey, array $options = [])
     {
         $this->consumerKey = $consumerKey;
-        $this->httpClient = new HttpClient();
+        $this->httpClient = new HttpClient($options);
+    }
+
+    /**
+     * Get the HTTP client used for communication with Digits.
+     *
+     * @return ClientInterface
+     */
+    public function getHttpClient()
+    {
+        return $this->httpClient;
     }
 
     /**
