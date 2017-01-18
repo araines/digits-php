@@ -22,9 +22,9 @@ class Client
     const HOST_TWITTER = 'api.twitter.com';
 
     /**
-     * @var string Digits Consumer Key
+     * @var array Digits Consumer Keys
      */
-    private $consumerKey;
+    private $consumerKeys;
 
     /**
      * @var ClientInterface The HTTP client for communication with Digits
@@ -37,12 +37,15 @@ class Client
     private $serializer;
 
     /**
-     * @param string $consumerKey Digits Consumer Key
-     * @param array  $options     Options for the underlying HTTP client
+     * @param string|array $consumerKey Digits Consumer Key(s)
+     * @param array        $options     Options for the underlying HTTP client
      */
     public function __construct($consumerKey, array $options = [])
     {
-        $this->consumerKey = $consumerKey;
+        if (!is_array($consumerKey)) {
+            $consumerKey = [$consumerKey];
+        }
+        $this->consumerKeys = $consumerKey;
         $this->httpClient = new HttpClient($options);
     }
 
@@ -113,7 +116,7 @@ class Client
 
         // Ensure the consumer keys match
         $key = $this->getValue('oauth_consumer_key', $credentials);
-        if ($key !== $this->consumerKey) {
+        if (!in_array($key, $this->consumerKeys)) {
             throw new KeyMismatchException('The Digits consumer key does not match.');
         }
 

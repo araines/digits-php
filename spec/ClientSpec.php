@@ -135,6 +135,30 @@ class ClientSpec extends ObjectBehavior
             ->duringVerify($url, $auth);
     }
 
+    public function it_verifies_a_user_with_one_of_many_consumer_keys(
+        ClientInterface $httpClient, SerializerInterface $serializer,
+        ResponseInterface $response, User $user
+    ) {
+        $url = 'https://api.digits.com/1.1/sdk/account.json';
+        $auth = $this->generateAuth('OAuth', [
+            'oauth_consumer_key' => 'SomeKey3',
+            'oauth_nonce' => 'abc',
+        ]);
+
+        $options = Argument::withEntry('headers', Argument::withEntry('Authorization', $auth));
+        $httpClient->request('GET', $url, $options)->willReturn($response);
+
+        $body = ['a' => 'b'];
+        $response->getBody()->willReturn($body);
+
+        $serializer->deserialize($body, User::class, 'json')->willReturn($user);
+
+        $this->beConstructedWith(['SomeKey1', 'SomeKey2', 'SomeKey3']);
+        $this->setHttpClient($httpClient);
+        $this->setSerializer($serializer);
+        $this->verify($url, $auth)->shouldReturn($user);
+    }
+
     /**
      * Generate a valid auth string based on scheme and a hash of params.
      *

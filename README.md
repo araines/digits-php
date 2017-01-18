@@ -48,6 +48,16 @@ $options = [
 $client = Client('YOUR_DIGITS_CONSUMER_KEY', $options);
 ```
 
+In some scenarios you may have more than one set of Digits Keys that you wish
+to permit signing via (e.g. an iOS app and an Android app which share the same
+API service).  In this case you can pass an array of keys to the Client instead:
+
+```
+use Sportlobster\Digits\Client;
+
+$client = Client(['KEY1', 'KEY2', ...]);
+```
+
 Contributing
 ------------
 
